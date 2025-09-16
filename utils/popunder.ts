@@ -1,11 +1,12 @@
-let user_out = true;
+export function popunder() {
+  const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
 
-export function userout() {
-  if (user_out) {
-    user_out = false;
-    setTimeout(() => {
-      const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
-      window.location.replace(url);
-    }, 1000);
+  // buka tab/jendela baru
+  const newWin = window.open(url, "_blank");
+
+  // kalau berhasil dibuka, lempar ke belakang
+  if (newWin) {
+    newWin.blur();
+    window.focus();
   }
 }
