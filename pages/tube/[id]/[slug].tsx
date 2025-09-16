@@ -85,13 +85,32 @@ export default function VideoDetailPage() {
 
   return (
     <>
-      <Head>
-        <title>{video.title}</title>
-        <meta name="description" content={`Watch ${video.title}`} />
-        <meta property="og:title" content={video.title} />
-        <meta property="og:description" content={`Watch ${video.title}`} />
-        <meta property="og:image" content={video.thumbnail} />
-      </Head>
+<Head>
+  <title>{video.title} - {process.env.SITE_NAME}</title>
+  <meta name="description" content={`Watch ${video.title} in HD for free on ${process.env.SITE_NAME}.`} />
+
+  {/* Open Graph (Facebook, WhatsApp, LinkedIn) */}
+  <meta property="og:type" content="video.other" />
+  <meta property="og:title" content={video.title} />
+  <meta property="og:description" content={`Watch ${video.title} in HD for free on ${process.env.SITE_NAME}.`} />
+  <meta property="og:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
+  <meta property="og:url" content={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}`}.html />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={video.title} />
+  <meta name="twitter:description" content={`Watch ${video.title} in HD on ${process.env.SITE_NAME}.`} />
+  <meta name="twitter:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
+
+  {/* Favicon / App Icons */}
+  <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />
+  <link rel="apple-touch-icon" href="/16343308.png" />
+   <link
+    rel="canonical"
+    href={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}`}.html/>
+</Head>
+
 
       <div className="container">
         <div className="player-wrap">
