@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -33,25 +33,18 @@ export default function VideoDetailPage() {
 
   const allVideos: Video[] = getAllVideos() as Video[];
 
-  // slugify untuk url
   const slugify = (s = "") =>
-    s
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+    s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   const videoHref = (v: Video) => `/tube/${v.id}/${v.slug ?? slugify(v.title)}`;
 
-  // convert detik → menit
   const durationToMin = (duration?: string | number) => {
     const sec = Number(duration) || 0;
-    if (!sec) return "0 min";
     const m = Math.ceil(sec / 60);
     return `${m} min`;
   };
 
-  // ambil kategori video
-  const categories: string[] = React.useMemo(() => {
+  const categories: string[] = useMemo(() => {
     const c = video.categories;
     if (!c) return [];
     if (Array.isArray(c)) return c.map((x) => String(x).trim()).filter(Boolean);
@@ -61,10 +54,8 @@ export default function VideoDetailPage() {
       .filter(Boolean);
   }, [video.categories]);
 
-  // ambil 30 video random untuk recommended
-  const recommended: Video[] = React.useMemo(() => {
+  const recommended: Video[] = useMemo(() => {
     const pool = allVideos.filter((v) => v.id !== video.id);
-    if (pool.length === 0) return [];
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -72,8 +63,7 @@ export default function VideoDetailPage() {
     return pool.slice(0, 30);
   }, [allVideos, video.id]);
 
-  // ambil random kategori global dari semua video
-  const randomCategories: string[] = React.useMemo(() => {
+  const randomCategories: string[] = useMemo(() => {
     const set = new Set<string>();
     allVideos.forEach((v) => {
       if (Array.isArray(v.categories)) {
@@ -112,18 +102,19 @@ export default function VideoDetailPage() {
               className="video-wrap"
               style={{ position: "relative", paddingTop: "56.25%" }}
             >
-              <iframe className="video"
+              <iframe
+                className="video"
                 src={video.embed}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
                 title={video.title}
                 frameBorder={0}
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "852",
-                  height: "480",
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </div>
@@ -134,13 +125,11 @@ export default function VideoDetailPage() {
               {categories.length > 0 ? (
                 categories.map((cat) => (
                   <Link key={cat} href={`/category/${encodeURIComponent(cat)}`}>
-                    <a>{cat}</a>
+                    {cat}
                   </Link>
                 ))
               ) : (
-                <Link href="/category/uncategorized">
-                  <a>uncategorized</a>
-                </Link>
+                <Link href="/category/uncategorized">uncategorized</Link>
               )}
             </p>
 
@@ -154,7 +143,7 @@ export default function VideoDetailPage() {
             <div className="thumb" key={v.id}>
               <div className="thumb-in">
                 <Link href={videoHref(v)}>
-                  <a>
+                  <div>
                     <div className="img-wrap">
                       <img
                         className="img"
@@ -165,7 +154,7 @@ export default function VideoDetailPage() {
                       <div className="len">{durationToMin(v.duration)}</div>
                     </div>
                     <p className="thumb-title">{v.title}</p>
-                  </a>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -177,7 +166,7 @@ export default function VideoDetailPage() {
           <div className="kategori-wrap">
             {randomCategories.map((cat) => (
               <Link key={cat} href={`/category/${encodeURIComponent(cat)}`}>
-                <a className="kategori-item">{cat}</a>
+                <span className="kategori-item">{cat}</span>
               </Link>
             ))}
           </div>
