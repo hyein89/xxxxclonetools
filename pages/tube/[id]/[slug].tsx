@@ -96,7 +96,7 @@ export default function VideoDetailPage() {
   <meta property="og:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
   <meta
   property="og:url"
-  content={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}.html`}
+  content={videoHref(v)}
 />
 
 
@@ -112,7 +112,7 @@ export default function VideoDetailPage() {
   <link rel="apple-touch-icon" href="/16343308.png" />
    <link
     rel="canonical"
-    href={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}.html`}
+    href={videoHref(v)}
 />
 </Head>
 
