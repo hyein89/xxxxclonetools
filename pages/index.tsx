@@ -77,7 +77,7 @@ export default function SearchPage() {
   return (
     <>
       <Head>
-      <title>{process.env.NEXT_PUBLIC_SITE_NAME} - Full High Definition Videos</title>
+      <title>{process.env.SITE_NAME} - Full High Definition Videos</title>
       <meta name="description"content={`${process.env.NEXT_PUBLIC_SITE_NAME} - Enjoy free HD videos sorted by categories and tags`} />
       <meta name="robots" content="noarchive"/>
         
