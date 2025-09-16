@@ -5,6 +5,11 @@ const nextConfig = {
   images: {
     domains: ["example.com"], // ganti dengan domain thumbnail kamu
   },
+
+  env: {
+    SITE_NAME: "CONHUB18",
+    SITE_DOMAIN: "https://example.com",
+  },
 };
 
 module.exports = nextConfig;
