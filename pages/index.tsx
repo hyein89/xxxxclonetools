@@ -58,78 +58,73 @@ export default function Home() {
     return copy.slice(0, 25);
   }, [categories]);
 
-  return (
-    <>
-      <Head>
-        <title>Full High Definition Videos - DOMAIN</title>
-        <meta
-          name="description"
-          content="Welcome! Enjoy Our Mobile Porn Sex Videos Now! Watch HD Sex Movies and Sorted By 100+ Porn Categories."
-        />
-      </Head>
+return (
+  <>
+    <Head>
+      <title>Full High Definition Videos - DOMAIN</title>
+      <meta
+        name="description"
+        content="Welcome! Enjoy Our Mobile Porn Sex Videos Now! Watch HD Sex Movies and Sorted By 100+ Porn Categories."
+      />
+    </Head>
 
-      <div className="container">
-        {/* Judul */}
-        <h1 className="title-bar h2">Movie Populer</h1>
+    <div className="container">
+      {/* Judul */}
+      <h1 className="title-bar h2">Movie Populer</h1>
 
-        {/* Daftar video */}
-        <div className="thumbs">
-          {videosPage.map((video: any) => (
-            <div className="thumb" key={video.id_video}>
-              <div className="thumb-in">
-                <Link
-                  href={`/tube/${video.id_video}/${slugify(
-                    String(video.title || "")
-                  )}.html`}
-                >
-                  <a className="thumb-link">
-                    <div className="img-wrap">
-                      <img
-                        className="img"
-                        src={video.thumbnail}
-                        alt={video.title}
-                        loading="lazy"
-                      />
-                      <div className="len">{formatDuration(video.duration)}</div>
-                    </div>
-                    <p className="thumb-title">{video.title}</p>
-                  </a>
-                </Link>
-              </div>
+      {/* Daftar video */}
+      <div className="thumbs">
+        {videosPage.map((video: any) => (
+          <div className="thumb" key={video.id_video}>
+            <div className="thumb-in">
+              <Link
+                href={`/tube/${video.id_video}/${slugify(
+                  String(video.title || "")
+                )}.html`}
+                className="thumb-link"
+              >
+                <div className="img-wrap">
+                  <img
+                    className="img"
+                    src={video.thumbnail}
+                    alt={video.title}
+                    loading="lazy"
+                  />
+                  <div className="len">{formatDuration(video.duration)}</div>
+                </div>
+                <p className="thumb-title">{video.title}</p>
+              </Link>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
-        {/* Pagination */}
-        <div className="pagination">
-          {currentPage > 1 ? (
-            <Link href={`/?page=${currentPage - 1}`}>
-              <a>&larr;&nbsp;prev</a>
-            </Link>
-          ) : (
-            <span className="disabled">&larr;&nbsp;prev</span>
-          )}
+      {/* Pagination */}
+      <div className="pagination">
+        {currentPage > 1 ? (
+          <Link href={`/?page=${currentPage - 1}`}>&larr;&nbsp;prev</Link>
+        ) : (
+          <span className="disabled">&larr;&nbsp;prev</span>
+        )}
 
-          {currentPage < totalPages ? (
-            <Link href={`/?page=${currentPage + 1}`}>
-              <a>next&nbsp;&rarr;</a>
-            </Link>
-          ) : (
-            <span className="disabled">next&nbsp;&rarr;</span>
-          )}
-        </div>
+        {currentPage < totalPages ? (
+          <Link href={`/?page=${currentPage + 1}`}>next&nbsp;&rarr;</Link>
+        ) : (
+          <span className="disabled">next&nbsp;&rarr;</span>
+        )}
+      </div>
 
-        {/* Total video - DITEMPATKAN DI BAWAH PAGINATION & DITENGAHKAN */}
-        <div className="total-video center">
-          <p>
-            Total Videos: <strong>{videos.length}</strong>
-          </p>
-        </div>
+      {/* Total video */}
+      <div className="total-video center">
+        <p>
+          Total Videos: <strong>{videos.length}</strong>
+        </p>
+      </div>
 
-        <br />
-        <br />
+      <br />
+      <br />
 
-      {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
+      {/* Category */}
       <div className="title-bar h2 po h2">Category</div>
       <div className="trends">
         <div className="kategori-wrap">
@@ -145,5 +140,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
-}
+  </>
+);
