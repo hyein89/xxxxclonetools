@@ -132,20 +132,21 @@ export default function SearchPage() {
       <br />
       <br />
 
-      {/* Category */}
-      <div className="title-bar h2 po h2">Category</div>
-      <div className="trends">
-        {randomCategories.map((cat) => (
-          <div className="kategori-wrap" key={cat}>
-            <Link
-              href={`/category?name=${encodeURIComponent(cat)}`}
-              className="kategori-item"
-            >
-              {cat}
-            </Link>
+        {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
+        <div className="title-bar h2 po h2">Category</div>
+        <div className="trends">
+          <div className="kategori-wrap">
+            {randomCategories.map((cat) => (
+              <Link
+                key={cat}
+                href={`/category?name=${encodeURIComponent(cat)}`}
+              >
+                <a className="kategori-item">{cat}</a>
+              </Link>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
