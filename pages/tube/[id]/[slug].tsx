@@ -97,28 +97,34 @@ export default function VideoDetailPage() {
         <div className="player-wrap">
           <h1 className="title-bar h2">{video.title}</h1>
 
-          <div className="player">
-            <div
-              className="video-wrap"
-              style={{ position: "relative", paddingTop: "56.25%" }}
-            >
-              <iframe
-                className="video"
-                src={video.embed}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                title={video.title}
-                frameBorder={0}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
-            </div>
-          </div>
+<div className="player">
+  <div
+    className="video-wrap"
+    style={{
+      position: "relative",
+      paddingTop: "56.25%", // aspect ratio
+      maxWidth: "852px",   // batasi ukuran
+      margin: "0 auto",    // biar center
+    }}
+  >
+    <iframe
+      className="video"
+      src={video.embed}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+      title={video.title}
+      frameBorder={0}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  </div>
+</div>
+
 
           <div className="info">
             <p className="tags">
