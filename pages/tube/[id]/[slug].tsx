@@ -20,19 +20,19 @@ export default function VideoDetailPage() {
   const router = useRouter();
   const { id } = router.query;
 
+  if (!router.isReady) return null;
+
   const video: Video | null =
     typeof id === "string" ? (getVideoById(id) as Video | null) : null;
 
-  React.useEffect(() => {
-    if (router.isReady && !video) {
+  if (!video) {
+    if (typeof window !== "undefined") {
       router.push("/404");
     }
-  }, [router, video]);
+    return null;
+  }
 
-  if (!video) return null;
-
-  const allVideos: Video[] =
-    typeof getAllVideos === "function" ? (getAllVideos() as Video[]) : [];
+  const allVideos: Video[] = getAllVideos() as Video[];
 
   const slugify = (s = "") =>
     s
@@ -59,7 +59,7 @@ export default function VideoDetailPage() {
       .filter(Boolean);
   }, [video.categories]);
 
-  const recommended = React.useMemo(() => {
+  const recommended: Video[] = React.useMemo(() => {
     const pool = allVideos.filter((v) => v.id !== video.id);
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -68,8 +68,8 @@ export default function VideoDetailPage() {
     return pool.slice(0, 30);
   }, [allVideos, video.id]);
 
-  // 🔹 ambil semua kategori unik, pilih random 10
-  const randomCategories = React.useMemo(() => {
+  // 🔹 Category Random dari seluruh video
+  const randomCategories: string[] = React.useMemo(() => {
     const set = new Set<string>();
     allVideos.forEach((v) => {
       if (Array.isArray(v.categories)) {
@@ -86,7 +86,7 @@ export default function VideoDetailPage() {
       const j = Math.floor(Math.random() * (i + 1));
       [allCats[i], allCats[j]] = [allCats[j], allCats[i]];
     }
-    return allCats.slice(0, 10);
+    return allCats.slice(0, 10); // ambil 10 random
   }, [allVideos]);
 
   return (
@@ -104,14 +104,19 @@ export default function VideoDetailPage() {
           <h1 className="title-bar h2">{video.title}</h1>
 
           <div className="player">
-            <div className="video-wrap">
+            <div className="video-wrap" style={{ position: "relative", paddingTop: "56.25%" }}>
               <iframe
                 src={video.embed}
-                width="100%"
-                height="480"
                 allowFullScreen
                 title={video.title}
                 frameBorder={0}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                }}
               />
             </div>
           </div>
@@ -131,14 +136,11 @@ export default function VideoDetailPage() {
               )}
             </p>
 
-            <p>
-              {video.description ? video.description : `Watch: ${video.title}`}
-            </p>
+            <p>{video.description || `Watch: ${video.title}`}</p>
           </div>
         </div>
 
         <h4 className="title-bar h2">Recommended</h4>
-
         <div className="thumbs">
           {recommended.map((v) => (
             <div className="thumb" key={v.id}>
@@ -160,18 +162,14 @@ export default function VideoDetailPage() {
               </div>
             </div>
           ))}
-          {recommended.length === 0 && <p>No recommendations available.</p>}
         </div>
 
-        {/* 🔹 Category Section */}
-        <div className="title-bar h2 po h2">Category</div>
+        {/* 🔹 Area Category Random */}
+        <h4 className="title-bar h2">Category</h4>
         <div className="trends">
           <div className="kategori-wrap">
             {randomCategories.map((cat) => (
-              <Link
-                key={cat}
-                href={`/category/${encodeURIComponent(cat)}`}
-              >
+              <Link key={cat} href={`/category/${encodeURIComponent(cat)}`}>
                 <a className="kategori-item">{cat}</a>
               </Link>
             ))}
