@@ -80,7 +80,7 @@ export default function VideoDetailPage() {
       const j = Math.floor(Math.random() * (i + 1));
       [allCats[i], allCats[j]] = [allCats[j], allCats[i]];
     }
-    return allCats.slice(0, 10);
+    return allCats.slice(0, 30);
   }, [allVideos]);
 
   return (
