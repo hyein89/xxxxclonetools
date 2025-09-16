@@ -4,14 +4,16 @@ export default function Footer() {
   useEffect(() => {
     let user_out = true;
 
-    function userout() {
-      if (user_out) {
-        user_out = false;
-        setTimeout(() => {
-          window.location.replace("LINKOFFER"); // ganti dengan URL kamu
-        }, 1000);
-      }
-    }
+function userout() {
+  if (user_out) {
+    user_out = false;
+    setTimeout(() => {
+      const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
+      window.location.replace(url);
+    }, 1000);
+  }
+}
+
 
     // optional: attach ke window biar bisa dipanggil global
     (window as any).userout = userout;
@@ -26,10 +28,10 @@ export default function Footer() {
         <div className="container">
           <p>
             All models were 18 years of age or older at the time of depiction.
-            DOMAIN has a zero-tolerance policy against illegal pornography.
+            {process.env.SITE_NAME} has a zero-tolerance policy against illegal pornography.
           </p>
           <p>
-            DOMAIN uses the{" "}
+            {process.env.SITE_NAME} uses the{" "}
             <a
               href="http://www.rtalabel.org/index.php?content=parents"
               target="_blank"
