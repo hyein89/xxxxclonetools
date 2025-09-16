@@ -144,7 +144,7 @@ export default function SearchPage() {
       {/* Total video hasil pencarian */}
       <div className="total-video">
         <p>
-          Total Videos in "{query}": <strong>{filteredVideos.length}</strong>
+          Total Videos in {query}: <strong>{filteredVideos.length}</strong>
         </p>
       </div>
 
