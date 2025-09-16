@@ -81,9 +81,11 @@ export default function SearchPage() {
       <meta name="description"content={`${process.env.NEXT_PUBLIC_SITE_NAME} - Enjoy free HD videos sorted by categories and tags`} />
       <meta name="robots" content="noarchive"/>
         
-      <meta itemprop="image" content="/6211226844449800700.jpg"/>  
-      <meta property="og:image" content="/6211226844449800700.jpg"/>
-      <meta property="twitter:image:src" content="/6211226844449800700.jpg"/>
+      <meta name="robots" content="noarchive" />
+      <meta itemProp="image" content="/6211226844449800700.jpg" />
+      <meta property="og:image" content="/6211226844449800700.jpg" />
+      <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
+
         
       <link rel="icon" type="image/png" href="/16343308.png"/>
       <link rel="icon" type="image/png" sizes="96x96"href="/16343308.png"/>
