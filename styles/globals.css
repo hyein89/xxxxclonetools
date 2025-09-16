@@ -199,15 +199,8 @@ hr {
 
 .len {display: block; position: absolute; right: 5px; bottom: 5px; padding: 0 5px; text-align: center; background-color: rgba(0,0,0,0.7); line-height: 21px; font-size: 12px; font-weight: 700; color: #fff; z-index: 20; border-radius: 4px;}
 
+.pagination disabled {padding: 15px; color: #999; cursor: not-allowed; margin: 0px 3px; text-decoration: none; font-weight: bold; background-color: #f8f8f8; border-radius: 10px; font-size: 17px;}
 
-.pagination .disabled {
-  color: #999;
-  border: 1px solid #eee;
-  padding: 4px 10px;
-  border-radius: 4px;
-  cursor: not-allowed;
-  background: #f8f8f8;
-}
 .total-video {
   text-align: center;
   margin: 0 auto;
