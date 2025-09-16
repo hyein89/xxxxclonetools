@@ -1,41 +1,10 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Head from "next/head";
-import { getAllVideos } from "../utils/getVideo";
-import { slugify } from "../utils/slugify";
-
-// Helper convert detik -> menit
-function formatDuration(seconds: string) {
-  const mins = Math.floor(parseInt(seconds, 10) / 60);
-  return `${mins} min`;
-}
+import Layout from "../components/Layout";
 
 export default function Home() {
-  const router = useRouter();
-  const pageParam = parseInt((router.query.page as string) || "1", 10);
-
-  const videos = getAllVideos();
-  const perPage = 50;
-  const totalPages = Math.ceil(videos.length / perPage);
-  const currentPage = Math.min(Math.max(pageParam, 1), totalPages);
-
-  // Slice video sesuai halaman
-  const startIndex = (currentPage - 1) * perPage;
-  const endIndex = startIndex + perPage;
-  const videosPage = videos.slice(startIndex, endIndex);
-
-  // Ambil kategori unik
-  const categories = Array.from(
-    new Set(videos.flatMap((v) => v.categories.split(",")))
-  );
-
-  // Random 25 kategori
-  const randomCategories = categories
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 25);
+  // ...kode kamu
 
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Full High Definition Videos - DOMAIN</title>
         <meta
@@ -111,6 +80,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </div>
+    </Layout>
   );
 }
