@@ -50,6 +50,13 @@ export default function SearchPage() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 25);
 
+  const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN || "https://example.com";
+
+  // bikin canonical URL sesuai query
+  const canonicalUrl = q
+    ? `${siteDomain}/search?q=${encodeURIComponent(String(q))}`
+    : `${siteDomain}/search`;
+  
   return (
     <div className="container">
       <Head>
@@ -62,6 +69,23 @@ export default function SearchPage() {
           name="description"
           content={`Search results for "${query}". Enjoy free HD porn videos sorted by categories and tags.`}
         />
+
+      <meta name="robots" content="noarchive"/>
+        
+      <meta name="robots" content="noarchive" />
+      <meta itemProp="image" content="/6211226844449800700.jpg" />
+      <meta property="og:image" content="/6211226844449800700.jpg" />
+      <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
+
+      <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />  
+      <link rel="apple-touch-icon" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png" />
+
+
+      <link rel="canonical" href={canonicalUrl} />  
       </Head>
 
       {/* Judul */}
