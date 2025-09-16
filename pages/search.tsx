@@ -1,11 +1,10 @@
-// pages/category.tsx
+// pages/search.tsx
 import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import { getAllVideos } from "../utils/getVideo";
 import { slugify } from "../utils/slugify";
-
 
 // Helper convert detik -> menit
 function formatDuration(seconds: string) {
@@ -132,21 +131,21 @@ export default function SearchPage() {
       <br />
       <br />
 
-        {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
-        <div className="title-bar h2 po h2">Category</div>
-        <div className="trends">
-          <div className="kategori-wrap">
-            {randomCategories.map((cat) => (
-              <Link
-                key={cat}
-                href={`/category?name=${encodeURIComponent(cat)}`}
-              >
-                <a className="kategori-item">{cat}</a>
-              </Link>
-            ))}
-          </div>
+      {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
+      <div className="title-bar h2 po h2">Category</div>
+      <div className="trends">
+        <div className="kategori-wrap">
+          {randomCategories.map((cat) => (
+            <Link
+              key={cat}
+              href={`/category?name=${encodeURIComponent(cat)}`}
+              className="kategori-item"
+            >
+              {cat}
+            </Link>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
