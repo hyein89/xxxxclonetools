@@ -98,23 +98,18 @@ export default function VideoDetailPage() {
           <h1 className="title-bar h2">{video.title}</h1>
 
 <div className="player">
-  <div
-    className="video-wrap"
-
-    }}
-  >
+  <div className="video-wrap">
     <iframe
       className="video"
       src={video.embed}
+      title={video.title}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
-      title={video.title}
       frameBorder={0}
-
-      }}
     />
   </div>
 </div>
+
 
 
           <div className="info">
