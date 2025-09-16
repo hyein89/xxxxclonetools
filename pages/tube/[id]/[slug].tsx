@@ -116,7 +116,7 @@ export default function VideoDetailPage() {
             <p className="tags">
               {categories.length > 0 ? (
                 categories.map((cat) => (
-                  <Link key={cat} href={`/category/${encodeURIComponent(cat)}`}>
+                  <Link key={cat} href={`/category?name=${encodeURIComponent(cat)}`}>
                     {cat}
                   </Link>
                 ))
@@ -153,12 +153,17 @@ export default function VideoDetailPage() {
           ))}
         </div>
 
-        <h4 className="title-bar h2">Category</h4>
+        {/* Category */}
+        <div className="title-bar h2 po h2">Category</div>
         <div className="trends">
           <div className="kategori-wrap">
             {randomCategories.map((cat) => (
-              <Link key={cat} href={`/category/${encodeURIComponent(cat)}`}>
-                <span className="kategori-item">{cat}</span>
+              <Link
+                key={cat}
+                href={`/category?name=${encodeURIComponent(cat)}`}
+                className="kategori-item"
+              >
+                {cat}
               </Link>
             ))}
           </div>
