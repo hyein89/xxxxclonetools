@@ -100,11 +100,7 @@ export default function VideoDetailPage() {
 <div className="player">
   <div
     className="video-wrap"
-    style={{
-      position: "relative",
-      paddingTop: "56.25%", // aspect ratio
-      maxWidth: "852px",   // batasi ukuran
-      margin: "0 auto",    // biar center
+
     }}
   >
     <iframe
@@ -114,12 +110,7 @@ export default function VideoDetailPage() {
       allowFullScreen
       title={video.title}
       frameBorder={0}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
+
       }}
     />
   </div>
