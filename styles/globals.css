@@ -208,3 +208,9 @@ hr {
   cursor: not-allowed;
   background: #f8f8f8;
 }
+.total-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
