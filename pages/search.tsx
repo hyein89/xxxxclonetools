@@ -7,9 +7,8 @@ import { getAllVideos } from "../utils/getVideo";
 import { slugify } from "../utils/slugify";
 
 // Helper convert detik -> menit
-function formatDuration(seconds?: string) {
-  const s = parseInt(String(seconds || "0"), 10);
-  const mins = Math.floor(s / 60);
+function formatDuration(seconds: string) {
+  const mins = Math.floor(parseInt(seconds, 10) / 60);
   return `${mins} min`;
 }
 
@@ -23,72 +22,66 @@ export default function SearchPage() {
   // Ambil semua video
   const videos = getAllVideos();
 
-  // Filter video berdasarkan title / categories
-  const filteredVideos = useMemo(() => {
-    return videos.filter((video) => {
-      const titleMatch = video.title.toLowerCase().includes(query.toLowerCase());
-      const categoryMatch = video.categories.toLowerCase().includes(query.toLowerCase());
-      return titleMatch || categoryMatch;
-    });
-  }, [videos, query]);
+  // Filter video berdasarkan title / categories yang mengandung query
+  const filteredVideos = videos.filter((video) => {
+    const titleMatch = video.title.toLowerCase().includes(query.toLowerCase());
+    const categoryMatch = video.categories
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    return titleMatch || categoryMatch;
+  });
 
   // Pagination
   const perPage = 50;
   const totalPages = Math.ceil(filteredVideos.length / perPage);
   const currentPage = Math.min(Math.max(pageParam, 1), totalPages || 1);
 
-  const videosPage = useMemo(() => {
-    const startIndex = (currentPage - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    return filteredVideos.slice(startIndex, endIndex);
-  }, [filteredVideos, currentPage]);
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const videosPage = filteredVideos.slice(startIndex, endIndex);
 
   // Ambil kategori unik
-  const categories = useMemo(() => {
-    return Array.from(
-      new Set(
-        videos.flatMap((v) =>
-          v.categories
-            .split(",")
-            .map((c) => c.trim())
-            .filter(Boolean)
-        )
-      )
-    );
-  }, [videos]);
+  const categories = Array.from(
+    new Set(videos.flatMap((v) => v.categories.split(",")))
+  );
 
   // Random 25 kategori
-  const randomCategories = useMemo(() => {
-    return categories.sort(() => Math.random() - 0.5).slice(0, 25);
-  }, [categories]);
+  const randomCategories = categories
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 25);
 
   const siteDomain = process.env.SITE_DOMAIN || "https://example.com";
 
-  // Canonical URL termasuk query & page
-  const canonicalUrl = `${siteDomain}/search?q=${encodeURIComponent(query)}&page=${currentPage}`;
+  // bikin canonical URL sesuai query
+   const canonicalUrl = router.query.q
+  ? `${siteDomain}/search/${encodeURIComponent(String(router.query.q))}`
+  : `${siteDomain}/search`;
 
+  
   return (
     <div className="container">
       <Head>
         <title>
-          Search{query ? `: ${query}` : ""} | {process.env.SITE_NAME}
+          Search{q ? `: ${q}` : ""} | {process.env.SITE_NAME}
         </title>
         <meta
           name="description"
-          content={`Search results for ${query || "videos"} on ${process.env.SITE_NAME}`}
+          content={`Search results for ${q || "videos"} on ${process.env.SITE_NAME}`}
         />
-        <meta name="robots" content="noarchive" />
-        <meta itemProp="image" content="/6211226844449800700.jpg" />
-        <meta property="og:image" content="/6211226844449800700.jpg" />
-        <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
+      <meta name="robots" content="noarchive"/>
+      <meta itemProp="image" content="/6211226844449800700.jpg" />
+      <meta property="og:image" content="/6211226844449800700.jpg" />
+      <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
 
-        <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />  
+      <link rel="apple-touch-icon" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png" />
 
-        <link rel="canonical" href={canonicalUrl} />
+
+      <link rel="canonical" href={canonicalUrl} />  
       </Head>
 
       {/* Judul */}
@@ -113,7 +106,9 @@ export default function SearchPage() {
                       alt={video.title}
                       loading="lazy"
                     />
-                    <div className="len">{formatDuration(video.duration)}</div>
+                    <div className="len">
+                      {formatDuration(video.duration)}
+                    </div>
                   </div>
                   <p className="thumb-title">{video.title}</p>
                 </Link>
@@ -156,8 +151,8 @@ export default function SearchPage() {
       <br />
       <br />
 
-      {/* Category */}
-      <div className="title-bar h2 po">Category</div>
+      {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
+      <div className="title-bar h2 po h2">Category</div>
       <div className="trends">
         <div className="kategori-wrap">
           {randomCategories.map((cat) => (
