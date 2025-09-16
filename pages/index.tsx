@@ -137,9 +137,7 @@ export default function SearchPage() {
           <div className="pagination">
             {currentPage > 1 ? (
               <Link
-                href={`/search?q=${encodeURIComponent(
-                  String(query)
-                )}&page=${currentPage - 1}`}
+                href={`?page=${currentPage - 1}`}
               >
                 &larr;&nbsp;prev
               </Link>
@@ -149,9 +147,7 @@ export default function SearchPage() {
 
             {currentPage < totalPages ? (
               <Link
-                href={`/search?q=${encodeURIComponent(
-                  String(query)
-                )}&page=${currentPage + 1}`}
+                href={`?page=${currentPage + 1}`}
               >
                 next&nbsp;&rarr;
               </Link>
