@@ -5,7 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { getAllVideos } from "../utils/getVideo";
 import { slugify } from "../utils/slugify";
-
+import { userout } from "../utils/userout";
 // Helper convert detik -> menit
 function formatDuration(seconds?: string | number) {
   const s =
