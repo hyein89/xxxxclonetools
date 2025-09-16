@@ -1,4 +1,3 @@
-// pages/tube/[id]/[slug].tsx
 import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -34,6 +33,7 @@ export default function VideoDetailPage() {
 
   const allVideos: Video[] = getAllVideos() as Video[];
 
+  // slugify untuk url
   const slugify = (s = "") =>
     s
       .toLowerCase()
@@ -42,6 +42,7 @@ export default function VideoDetailPage() {
 
   const videoHref = (v: Video) => `/tube/${v.id}/${v.slug ?? slugify(v.title)}`;
 
+  // convert detik → menit
   const durationToMin = (duration?: string | number) => {
     const sec = Number(duration) || 0;
     if (!sec) return "0 min";
@@ -49,6 +50,7 @@ export default function VideoDetailPage() {
     return `${m} min`;
   };
 
+  // ambil kategori video
   const categories: string[] = React.useMemo(() => {
     const c = video.categories;
     if (!c) return [];
@@ -59,8 +61,10 @@ export default function VideoDetailPage() {
       .filter(Boolean);
   }, [video.categories]);
 
+  // ambil 30 video random untuk recommended
   const recommended: Video[] = React.useMemo(() => {
     const pool = allVideos.filter((v) => v.id !== video.id);
+    if (pool.length === 0) return [];
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -68,7 +72,7 @@ export default function VideoDetailPage() {
     return pool.slice(0, 30);
   }, [allVideos, video.id]);
 
-  // 🔹 Category Random dari seluruh video
+  // ambil random kategori global dari semua video
   const randomCategories: string[] = React.useMemo(() => {
     const set = new Set<string>();
     allVideos.forEach((v) => {
@@ -86,7 +90,7 @@ export default function VideoDetailPage() {
       const j = Math.floor(Math.random() * (i + 1));
       [allCats[i], allCats[j]] = [allCats[j], allCats[i]];
     }
-    return allCats.slice(0, 10); // ambil 10 random
+    return allCats.slice(0, 10);
   }, [allVideos]);
 
   return (
@@ -104,18 +108,22 @@ export default function VideoDetailPage() {
           <h1 className="title-bar h2">{video.title}</h1>
 
           <div className="player">
-            <div className="video-wrap" style={{ position: "relative", paddingTop: "56.25%" }}>
-              <iframe
+            <div
+              className="video-wrap"
+              style={{ position: "relative", paddingTop: "56.25%" }}
+            >
+              <iframe className="video"
                 src={video.embed}
-                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
                 title={video.title}
                 frameBorder={0}
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
-                  height: "100%",
+                  width: "852",
+                  height: "480",
                 }}
               />
             </div>
@@ -164,7 +172,6 @@ export default function VideoDetailPage() {
           ))}
         </div>
 
-        {/* 🔹 Area Category Random */}
         <h4 className="title-bar h2">Category</h4>
         <div className="trends">
           <div className="kategori-wrap">
