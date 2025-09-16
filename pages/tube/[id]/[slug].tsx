@@ -94,7 +94,11 @@ export default function VideoDetailPage() {
   <meta property="og:title" content={video.title} />
   <meta property="og:description" content={`Watch ${video.title} in HD for free on ${process.env.SITE_NAME}.`} />
   <meta property="og:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
-  <meta property="og:url" content={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}`}.html />
+  <meta
+  property="og:url"
+  content={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}.html`}
+/>
+
 
   {/* Twitter */}
   <meta name="twitter:card" content="summary_large_image" />
@@ -108,7 +112,8 @@ export default function VideoDetailPage() {
   <link rel="apple-touch-icon" href="/16343308.png" />
    <link
     rel="canonical"
-    href={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}`}.html/>
+    href={`${process.env.SITE_DOMAIN}/tube/${video.id_video}/${video.slug}.html`}
+/>
 </Head>
 
 
