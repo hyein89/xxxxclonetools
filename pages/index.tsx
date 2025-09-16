@@ -100,21 +100,22 @@ export default function Home() {
         <br />
         <br />
 
-        {/* Category */}
-        <div className="title-bar h2 po h2">Category</div>
-        <div className="trends">
-          {randomCategories.map((cat) => (
-            <div className="kategori-wrap" key={cat}>
-              <Link
-                href={`/category?name=${encodeURIComponent(cat)}`}
-                className="kategori-item"
-              >
-                {cat}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
+{/* Category */}
+<div className="title-bar h2 po h2">Category</div>
+<div className="trends">
+  <div className="kategori-wrap">
+    {randomCategories.map((cat) => (
+      <Link
+        key={cat}
+        href={`/category?name=${encodeURIComponent(cat)}`}
+        className="kategori-item"
+      >
+        {cat}
+      </Link>
+    ))}
+  </div>
+</div>
+
     </>
   );
 }
