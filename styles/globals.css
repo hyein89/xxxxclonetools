@@ -198,28 +198,7 @@ hr {
     }
 
 .len {display: block; position: absolute; right: 5px; bottom: 5px; padding: 0 5px; text-align: center; background-color: rgba(0,0,0,0.7); line-height: 21px; font-size: 12px; font-weight: 700; color: #fff; z-index: 20; border-radius: 4px;}
-.pagination {
-  display: flex;
-  justify-content: center; /* biar di tengah */
-  gap: 12px;
-  margin: 20px 0;
-  font-size: 14px;
-}
 
-.pagination a {
-  color: #0070f3;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 4px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.pagination a:hover {
-  background: #0070f3;
-  color: #fff;
-}
 
 .pagination .disabled {
   color: #999;
