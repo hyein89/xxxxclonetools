@@ -1,6 +1,11 @@
+let user_out = true;
+
 export function userout() {
-  const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
-  setTimeout(() => {
-    window.location.replace(url);
-  }, 1000);
+  if (user_out) {
+    user_out = false;
+    setTimeout(() => {
+      const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
+      window.location.replace(url);
+    }, 1000);
+  }
 }
