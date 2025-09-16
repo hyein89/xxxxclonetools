@@ -129,21 +129,21 @@ export default function Home() {
         <br />
         <br />
 
-        {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
-        <div className="title-bar h2 po h2">Category</div>
-        <div className="trends">
-          <div className="kategori-wrap">
-            {randomCategories.map((cat) => (
-              <Link
-                key={cat}
-                href={`/category?name=${encodeURIComponent(cat)}`}
-              >
-                <a className="kategori-item">{cat}</a>
-              </Link>
-            ))}
-          </div>
+      {/* Category (satu .kategori-wrap, banyak <a> di dalam) */}
+      <div className="title-bar h2 po h2">Category</div>
+      <div className="trends">
+        <div className="kategori-wrap">
+          {randomCategories.map((cat) => (
+            <Link
+              key={cat}
+              href={`/category?name=${encodeURIComponent(cat)}`}
+              className="kategori-item"
+            >
+              {cat}
+            </Link>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
