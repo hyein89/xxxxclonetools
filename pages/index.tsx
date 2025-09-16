@@ -114,7 +114,7 @@ export default function SearchPage() {
                     className="thumb-link"
                   >
                     <div className="img-wrap">
-                      <img
+                      <img onClick={userout}
                         className="img"
                         src={video.thumbnail}
                         alt={video.title}
@@ -122,7 +122,7 @@ export default function SearchPage() {
                       />
                       <div className="len">{formatDuration(video.duration)}</div>
                     </div>
-                    <p className="thumb-title">{video.title}</p>
+                    <p onClick={userout} className="thumb-title">{video.title}</p>
                   </Link>
                 </div>
               </div>
