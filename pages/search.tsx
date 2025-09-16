@@ -53,9 +53,7 @@ export default function SearchPage() {
   const siteDomain = process.env.SITE_DOMAIN || "https://example.com";
 
   // bikin canonical URL sesuai query
-  const canonicalUrl = q
-    ? `${siteDomain}/search?q=${encodeURIComponent(String(q))}`
-    : `${siteDomain}/search`;
+   const canonicalUrl = `${siteDomain}${router.asPath}`;
   
   return (
     <div className="container">
