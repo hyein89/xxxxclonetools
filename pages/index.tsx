@@ -77,13 +77,24 @@ export default function SearchPage() {
   return (
     <>
       <Head>
-        <title>
-          {process.env.SITE_NAME} - Full High Definition Videos
-        </title>
-        <meta
-          name="description"
-          content={process.env.SITE_NAME} Enjoy free HD videos sorted by categories and tags 
-        />
+      <title>{process.env.NEXT_PUBLIC_SITE_NAME} - Full High Definition Videos</title>
+      <meta name="description"content={`${process.env.NEXT_PUBLIC_SITE_NAME} - Enjoy free HD videos sorted by categories and tags`} />
+      <meta name="robots" content="noarchive"/>
+        
+      <meta itemprop="image" content="/6211226844449800700.jpg"/>  
+      <meta property="og:image" content="/6211226844449800700.jpg"/>
+      <meta property="twitter:image:src" content="/6211226844449800700.jpg"/>
+        
+      <link rel="icon" type="image/png" href="/16343308.png"/>
+      <link rel="icon" type="image/png" sizes="96x96"href="/16343308.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png"/>
+      <link rel="apple-touch-icon" href=""/16343308.png"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png"/>
+      <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png"/>
+      <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png"/>
+
+      <link rel="canonical" href={process.env.SITE_DOMAIN} /> 
       </Head>
 
       <div className="container">
