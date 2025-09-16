@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+* {margin: 0; padding: 0;  font-family: "Oswald", sans-serif; box-sizing: border-box; -moz-box-sizing: border-box; outline: none;}
+html {width: 100%; height: 100%;}
+body {width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 13px; color: #111; background-color: #120A18;}
+
+a {outline: none; text-decoration: none; color: #000;}
+ol, ul, li {list-style: none; margin: 0; padding: 0;}
+img {border: none; display: block;}
+
+.wrap { margin: 0 auto; width: 100%; overflow: hidden; clear: both; }
+.container {width: 80%; min-width: 250px; max-width: 1356px; margin: 0 auto; padding: 0 5px; overflow: hidden;
+ /* path ke gambar */
+}
+
+.topline {padding: 5px 0; font-size: 14px; overflow: hidden; clear: both; background-color: #120A18; font-weight: 500;}
+.topline .container {padding: 0 15px;}
+.topline a {color: #eee; margin-right: 10px;}
+
+.header {padding: 10px 0; font-size: 30px; overflow: hidden; clear: both; background: #b5e48c;}
+.header .logo {color: #111; font-weight: bold;}
+.header .container {padding: 0 15px;}
+.search {margin: 0px 0 5px 0; display: inline-block; width: 100%; max-width: 320px; font-size: 0; float: right;}
+#searchform input[type=search] {padding: 8px; width: 100%; font-size: 15px; border-radius: 5px; border: 2px solid #52b69a; background-color: #fff; color: #000; outline: none;}
+::-webkit-input-placeholder {color: #666;}
+:-moz-placeholder {color: #666;}
+::-moz-placeholder {color: #666;}
+:-ms-input-placeholder {color: #666;}
+
+
+.h1 {font-weight: normal; font-size: 23px; color: #000; padding: 10px 10px 10px 10px; margin: 0px; overflow:hidden; clear:both; text-align: left;}
+.h2 {font-weight: normal; font-size: 21px; color: #000; padding: 15px 10px 10px 10px; margin: 0px; overflow:hidden; clear:both; text-align: left; text-transform: capitalize;}
+
+
+.thumbs { padding: 5px; margin-bottom: 20px; width: 100%; overflow: hidden; clear: both;}
+.thumb {width: 25%; float: left; display: block; padding: 5px; }
+.thumb-in {overflow: hidden; background-color: #fff;}
+.img-wrap { position: relative; padding-bottom: 56.25%; display: block; background-color: #ccc; cursor: pointer; }
+.img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; overflow: hidden; }
+.thumb-title { line-height: 18px; height: 36px; overflow: hidden; display: block; margin: 5px 10px; padding: 0px; text-decoration: none; font-size: 14px; color: #000; font-style: normal; text-overflow: ellipsis; text-align: left; font-weight: 500;}
+.thumb-title a { color: #000; }
+
+.pagination {text-align: center; font-size: 17px; margin: 30px 5px 20px 5px;}
+.pagination a {padding: 15px; margin: 0px 3px; text-decoration: none; font-weight: bold; background-color: #fff; border-radius: 10px; font-size: 17px;}
+
+.player-wrap {display: block; margin: 5px 10px 5px 10px; position: relative; font-size: 0;}
+.player-wrap .h1 {padding-left: 0;}
+.player-wrap .info {font-size: 14px; padding: 10px 0;}
+.player{background-color: #000; border-radius: 5px; padding-left: 10%; padding-right: 10%;}
+.video-wrap {position: relative; padding-bottom: 56.25%; overflow: hidden; }
+.video {position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: #000;  overflow: hidden;}
+.tags a {display: inline-block; line-height: 24px; height: 24px; border-radius: 5px; margin: 0 8px 10px 0; text-decoration: none; background-color: #b5e48c; padding: 0 10px; font-size: 14px; font-weight: 500;}
+
+.trends {padding: 10px; margin-bottom: 30px;}
+.trends a {display: inline-block; padding: 0 10px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; line-height: 34px; font-size: 14px; border-radius: 5px; text-transform: capitalize; background: #fff; font-weight: 500;}
+
+
+
+.footer {padding: 20px 0; margin-top: 30px; font-size: 14px; line-height: 14px; background: #fff;}
+.footer .container {padding: 0 15px;}
+.footer p {padding: 5px 0;}
+
+
+@media all and (max-width: 1356px) {
+.wrap { max-width: 100%;}
+.container { width: 100%;}
+.thumb { width: 25%; }
+}
+
+@media all and (max-width: 1000px) {
+.container { width: 100%;}
+.thumb { width: 33.33333%; }
+}
+
+@media all and (max-width: 640px) {
+.container { width: 100%;}
+.thumb { width: 50%; }
+
+.top { text-align: center; }
+.header { text-align: center; }
+.search { float: none; }
+}
+
+@media all and (max-width: 340px) {
+.thumb { width: 50%; }
+}
+
+
+.container {width: 99%; }
+.wrap {width: 80%; background-color: #fff; }
+.header { background-color: #fff; }
+#searchform input[type=search] { border: 2px solid #bbb;}
+.img-wrap {background: #eee;}
+.tags a {background-color: #DDF2FD; }
+.trends a {background: #eee;}
+.footer { background: #eee;}
+.pagination a { background: #eee;}
+
+
+
+@media all and (max-width: 1356px) {
+.wrap { width: 99%;}
+}
+
+@media all and (max-width: 1000px) {
+.wrap { width: 99%;}
+}
+
+@media all and (max-width: 640px) {
+.wrap { width: 100%;}
+}
+
+@media all and (max-width: 340px) {
+.wrap { width: 100%;}
+}
+
+      
+#bubble {position: fixed; bottom: 15px; right: 15px; font-size: 17px; z-index: 100; background-color: #7dcea0; color: #222; padding: 6px 10px; border-radius: 16px;border: 2px solid #333; font-weight: bold;}
+    
+    .kategori-judul {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .kategori-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .kategori-item {
+      display: inline-block;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border: 1px solid #888;
+      color: #000;
+      text-decoration: none;
+      border-radius: 999px;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .kategori-item:hover {
+      background: #fff;
+      color: #000;
+      text-decoration: none;  
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      .kategori-judul {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+         
+      }
+      .kategori-wrap {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+       
+      }
+      .kategori-item {
+        font-size: 0.75rem;
+       
+        border-radius: 999px;
+      }
+   
+       }
+      .kategori-wrap {
+        gap: 8px;
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+hr {
+  border: 0;
+  height: 4px;
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  margin: 20px 0;
+}
+
+ .title-bar {
+      display: block;
+      width: 100%;
+      background: #2c3e50;   /* warna background */
+      color: #fff;           /* warna teks */
+      padding: 12px 16px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    /* bisa dihapus kalau mau lurus */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Responsif: kecilkan font di HP */
+    @media (max-width: 480px) {
+      .title-bar {
+        font-size: 1.2rem;
+        padding: 10px 12px;
+      }
+    }
+
+.len {display: block; position: absolute; right: 5px; bottom: 5px; padding: 0 5px; text-align: center; background-color: rgba(0,0,0,0.7); line-height: 21px; font-size: 12px; font-weight: 700; color: #fff; z-index: 20; border-radius: 4px;}
