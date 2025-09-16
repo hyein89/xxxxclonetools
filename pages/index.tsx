@@ -86,15 +86,13 @@ export default function SearchPage() {
       <meta property="og:image" content="/6211226844449800700.jpg" />
       <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
 
-        
-      <link rel="icon" type="image/png" href="/16343308.png"/>
-      <link rel="icon" type="image/png" sizes="96x96"href="/16343308.png"/>
-      <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png"/>
-      <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png"/>
-      <link rel="apple-touch-icon" href=""/16343308.png"/>
-      <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png"/>
-      <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png"/>
-      <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />  
+      <link rel="apple-touch-icon" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png" />
+
 
       <link rel="canonical" href={process.env.SITE_DOMAIN} /> 
       </Head>
