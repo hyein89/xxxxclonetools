@@ -5,7 +5,7 @@ export default function Header() {
     <div className="header">
       <div className="container">
         <Link href="/" className="logo">
-          DOMAIN
+          {process.env.SITE_NAME}
         </Link>
 
         <div className="search">
