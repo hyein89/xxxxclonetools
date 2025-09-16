@@ -50,7 +50,7 @@ export default function SearchPage() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 25);
 
-  const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN || "https://example.com";
+  const siteDomain = process.env.SITE_DOMAIN || "https://example.com";
 
   // bikin canonical URL sesuai query
   const canonicalUrl = q
@@ -61,13 +61,11 @@ export default function SearchPage() {
     <div className="container">
       <Head>
         <title>
-          {query
-            ? `Search results for "${query}" - DOMAIN`
-            : "Search Videos - DOMAIN"}
+          Search{q ? `: ${q}` : ""} | {process.env.SITE_NAME}
         </title>
         <meta
           name="description"
-          content={`Search results for "${query}". Enjoy free HD porn videos sorted by categories and tags.`}
+          content={`Search results for ${q || "videos"} on ${process.env.SITE_NAME}`}
         />
 
       <meta name="robots" content="noarchive"/>
