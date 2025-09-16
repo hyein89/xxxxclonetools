@@ -13,7 +13,7 @@ export default function Header() {
             <input
               type="search"
               className="sf"
-              name="sq"
+              name="q"
               placeholder="Search"
               autoCapitalize="off"
               autoCorrect="off"
