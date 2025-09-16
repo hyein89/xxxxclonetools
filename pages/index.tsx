@@ -80,8 +80,6 @@ export default function SearchPage() {
       <title>{process.env.SITE_NAME} - Full High Definition Videos</title>
       <meta name="description"content={`${process.env.NEXT_PUBLIC_SITE_NAME} - Enjoy free HD videos sorted by categories and tags`} />
       <meta name="robots" content="noarchive"/>
-        
-      <meta name="robots" content="noarchive" />
       <meta itemProp="image" content="/6211226844449800700.jpg" />
       <meta property="og:image" content="/6211226844449800700.jpg" />
       <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
