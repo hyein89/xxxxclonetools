@@ -1,4 +1,4 @@
-// pages/search.tsx
+// pages/index.tsx
 import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -78,20 +78,18 @@ export default function SearchPage() {
     <>
       <Head>
         <title>
-          {query
-            ? `Search results for "${query}" - DOMAIN`
-            : "Search Videos - DOMAIN"}
+          {process.env.SITE_NAME} - Full High Definition Videos
         </title>
         <meta
           name="description"
-          content={`Search results for "${query}". Enjoy free HD videos sorted by categories and tags.`}
+          content={process.env.SITE_NAME} Enjoy free HD videos sorted by categories and tags 
         />
       </Head>
 
       <div className="container">
         {/* Judul */}
         <h1 className="title-bar h2">
-          {query ? `Search results for: ${query}` : "Search Videos"}
+         Free PRON Videos
         </h1>
 
         {/* Daftar video */}
@@ -121,7 +119,7 @@ export default function SearchPage() {
               </div>
             ))
           ) : (
-            <p>No videos found for &quot;{query}&quot;.</p>
+            <p>No videos found for .</p>
           )}
         </div>
 
