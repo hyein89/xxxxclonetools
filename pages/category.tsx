@@ -167,13 +167,17 @@ export default function CategoryPage() {
         <br />
         <br />
 
-        {/* Category random */}
+        {/* Category */}
         <div className="title-bar h2 po h2">Category</div>
         <div className="trends">
           <div className="kategori-wrap">
             {randomCategories.map((cat) => (
-              <Link key={cat} href={`/category?name=${encodeURIComponent(cat)}`}>
-                <a className="kategori-item">{cat}</a>
+              <Link
+                key={cat}
+                href={`/category?name=${encodeURIComponent(cat)}`}
+                className="kategori-item"
+              >
+                {cat}
               </Link>
             ))}
           </div>
