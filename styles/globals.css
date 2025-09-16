@@ -199,7 +199,20 @@ hr {
 
 .len {display: block; position: absolute; right: 5px; bottom: 5px; padding: 0 5px; text-align: center; background-color: rgba(0,0,0,0.7); line-height: 21px; font-size: 12px; font-weight: 700; color: #fff; z-index: 20; border-radius: 4px;}
 
-.pagination disabled {padding: 15px; color: #999; cursor: not-allowed; margin: 0px 3px; text-decoration: none; font-weight: bold; background-color: #f8f8f8; border-radius: 10px; font-size: 17px;}
+.pagination.disabled {
+  display: inline-block;
+  padding: 8px 15px;         /* lebih proporsional */
+  color: #aaa;               /* abu-abu, teks redup */
+  cursor: not-allowed;       /* tunjukkan disabled */
+  margin: 0 5px;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #f0f0f0; /* warna tombol non-aktif */
+  border-radius: 6px;        /* sedikit membulat */
+  font-size: 15px;
+  border: 1px solid #ddd;    /* biar lebih jelas tombol */
+  opacity: 0.6;              /* transparansi, kesan disabled */
+}
 
 .total-video {
   text-align: center;
