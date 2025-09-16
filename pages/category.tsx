@@ -75,17 +75,37 @@ export default function CategoryPage() {
 
   return (
     <>
-      <Head>
-        <title>
-          {categoryParam
-            ? `${categoryParam} Videos - DOMAIN`
-            : "Category Videos - DOMAIN"}
-        </title>
-        <meta
-          name="description"
-          content={`Watch ${categoryParam} porn videos in HD quality. Explore sorted categories on DOMAIN.`}
-        />
-      </Head>
+    <Head>
+  <title>
+    {categoryParam
+      ? `${categoryParam} Videos - ${process.env.SITE_NAME}`
+      : `Category Videos - ${process.env.SITE_NAME}`}
+  </title>
+
+  <meta
+    name="description"
+    content={`Watch ${categoryParam || "the best"} porn videos in HD quality. Explore sorted categories on ${process.env.SITE_NAME}.`}
+  />
+  <meta name="robots" content="noarchive" />
+  <meta itemProp="image" content="/6211226844449800700.jpg" />
+  <meta property="og:image" content="/6211226844449800700.jpg" />
+  <meta property="twitter:image:src" content="/6211226844449800700.jpg" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />  
+  <link rel="apple-touch-icon" href="/16343308.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/16343308.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/16343308.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/16343308.png" />
+
+  <link
+    rel="canonical"
+    href={`${process.env.SITE_DOMAIN}/category?name=${encodeURIComponent(
+      categoryParam || ""
+    )}`}
+  />
+</Head>
+
 
       <div className="container">
         {/* Judul */}
