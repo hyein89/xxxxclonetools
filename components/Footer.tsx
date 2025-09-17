@@ -1,4 +1,5 @@
 export default function Footer() {
+  const offerUrl = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
   return (
     <>
       {/* Slot iklan */}
@@ -32,7 +33,7 @@ export default function Footer() {
       {/* Bubble link */}
       <a
         id="bubble"
-        href="/"
+        href={offerUrl}
         target="_blank"
         rel="nofollow noopener"
       >
