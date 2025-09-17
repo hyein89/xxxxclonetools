@@ -3,7 +3,13 @@ export default function Footer() {
   return (
     <>
       {/* Slot iklan */}
-      <div className="ads-banner">{/* isi slot iklan */}</div>
+      <div className="ads-banner">{/* isi slot iklan */}
+        
+      <script async="async" data-cfasync="false" src="//difficultywithhold.com/3911d811a20e71a5214546d08cc0afaf/invoke.js"></script>
+      <div id="container-3911d811a20e71a5214546d08cc0afaf"></div>
+
+      {/* isi slot iklan */} 
+      </div>
 
       <div className="footer">
         <div className="container">
