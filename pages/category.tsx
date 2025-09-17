@@ -5,6 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { getAllVideos } from "../utils/getVideo";
 import { slugify } from "../utils/slugify";
+import { popunder } from "../utils/popunder";
 
 // Helper convert detik -> menit
 function formatDuration(seconds?: string) {
@@ -126,7 +127,7 @@ export default function CategoryPage() {
                   >
                     <a className="thumb-link">
                       <div className="img-wrap">
-                        <img
+                        <img onClick={popunder}
                           className="img"
                           src={video.thumbnail}
                           alt={video.title}
@@ -136,7 +137,7 @@ export default function CategoryPage() {
                           {formatDuration(video.duration)}
                         </div>
                       </div>
-                      <p className="thumb-title">{video.title}</p>
+                      <p onClick={popunder} className="thumb-title">{video.title}</p>
                     </a>
                   </Link>
                 </div>
