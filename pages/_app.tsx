@@ -49,7 +49,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
 
          {/* ADS SOSIALBAR */}
-        <script type="text/javascript" src="//difficultywithhold.com/03/49/28/03492842c401b23d7f49f47efafa0f88.js"></script>
+        <script type="text/javascript" src="//difficultywithhold.com/89/6e/ba/896eba7b8908be72a17c46518013c4b8.js"></script>
       </Layout>
 
       {/* Histats noscript fallback (gambar tanpa border via style) */}
