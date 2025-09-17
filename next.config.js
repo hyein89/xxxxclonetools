@@ -8,7 +8,7 @@ const nextConfig = {
 
   env: {
     SITE_NAME: "CONHUB18",
-    SITE_DOMAIN: "https://nextsxyphim.eu.org",
+    SITE_DOMAIN: "https://www.nextsxyphim.eu.org",
   },
 };
 
