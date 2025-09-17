@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       {/* Google Analytics */}
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX`}
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
       />
       <Script
         id="ga-init"
@@ -43,9 +43,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
 
+      {/* Layout + Content */}
       <Layout>
         <Component {...pageProps} />
       </Layout>
+
+      {/* Histats noscript fallback */}
+      <noscript>
+        <a href="https://www.histats.com" target="_blank" rel="noreferrer">
+          <img
+            src="//sstatic1.histats.com/0.gif?4828760&101"
+            alt="histats"
+            border="0"
+          />
+        </a>
+      </noscript>
     </>
   );
 }
