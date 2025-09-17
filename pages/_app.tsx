@@ -10,7 +10,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       {/* Google Analytics - ganti G-XXXXXXX dengan GA Measurement ID kamu */}
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+        src="https://www.googletagmanager.com/gtag/js?id=G-MW8WDMB4WT"
       />
       <Script
         id="ga-init"
@@ -20,7 +20,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXX');
+            gtag('config', 'G-MW8WDMB4WT');
           `,
         }}
       />
