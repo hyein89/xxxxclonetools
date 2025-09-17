@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { getVideoById, getAllVideos } from "../../../utils/getVideo";
-import { popunder } from "../utils/popunder";
+import { popunder } from "../../../utils/popunder";
 type Video = {
   id: string;
   slug?: string;
