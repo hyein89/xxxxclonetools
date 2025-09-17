@@ -1,24 +1,4 @@
-import { useEffect } from "react";
-
 export default function Footer() {
-  useEffect(() => {
-    let user_out = true;
-
-function userout() {
-  if (user_out) {
-    user_out = false;
-    setTimeout(() => {
-      const url = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
-      window.location.replace(url);
-    }, 1000);
-  }
-}
-
-
-    // optional: attach ke window biar bisa dipanggil global
-    (window as any).userout = userout;
-  }, []);
-
   return (
     <>
       {/* Slot iklan */}
