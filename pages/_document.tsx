@@ -8,7 +8,7 @@ export default function Document() {
         {/* Contoh iklan/head script */}
         <script
           type="text/javascript"
-          src="//difficultywithhold.com/a7/0c/53/a70c53ec64dade158b084af93e2acf60.js"
+          src="//difficultywithhold.com/4d/ee/fc/4deefc500d18b077c20b3d33e0dccb80.js"
         ></script>
       </Head>
       <body>
