@@ -7,12 +7,12 @@ export default function Footer() {
       <div className="ads-banner">{/* isi slot iklan */}
         
   {/* container iklan */}
-        <div id="container-3911d811a20e71a5214546d08cc0afaf"></div>
+        <div id="container-d62cde0b225e1812a42187e5eb1a7f52"></div>
 
-        {/* script adsterra */}
+        {/* script adsterra NATIVE BANER */}
         <Script
           id="adsterra-native"
-          src="//difficultywithhold.com/3911d811a20e71a5214546d08cc0afaf/invoke.js"
+          src="//difficultywithhold.com/d62cde0b225e1812a42187e5eb1a7f52/invoke.js"
           strategy="afterInteractive"
           async
           data-cfasync="false"
