@@ -36,7 +36,9 @@ export default function VideoDetailPage() {
   const slugify = (s = "") =>
     s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-  const videoHref = (v: Video) => `/tube/${v.id}/${v.slug ?? slugify(v.title)}`;
+ const videoHref = (v: Video) =>
+  `/tube/${v.id}/${v.slug ?? slugify(v.title)}.html`;
+
 
   const durationToMin = (duration?: string | number) => {
     const sec = Number(duration) || 0;
