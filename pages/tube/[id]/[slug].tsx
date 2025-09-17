@@ -95,10 +95,10 @@ export default function VideoDetailPage() {
   <meta property="og:type" content="video.other" />
   <meta property="og:title" content={video.title} />
   <meta property="og:description" content={`Watch ${video.title} in HD for free on ${process.env.SITE_NAME}.`} />
-  <meta property="og:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
+  <meta property="og:image" content={video.thumbnail || "/placeholder.png"} />
   <meta
   property="og:url"
-  content={`${process.env.SITE_DOMAIN}/tube/${video.id}/${video.slug}`}
+  content={`${process.env.SITE_DOMAIN}${videoHref(video)}`}
 />
 
 
@@ -106,7 +106,7 @@ export default function VideoDetailPage() {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={video.title} />
   <meta name="twitter:description" content={`Watch ${video.title} in HD on ${process.env.SITE_NAME}.`} />
-  <meta name="twitter:image" content={`${process.env.SITE_DOMAIN}${video.thumbnail}`} />
+  <meta name="twitter:image" content={video.thumbnail || "/placeholder.png"} />
 
   {/* Favicon / App Icons */}
   <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
@@ -114,8 +114,8 @@ export default function VideoDetailPage() {
   <link rel="apple-touch-icon" href="/16343308.png" />
    <link
     rel="canonical"
-    href={`${process.env.SITE_DOMAIN}/tube/${video.id}/${video.slug}`}
-/>
+    href={`${process.env.SITE_DOMAIN}${videoHref(video)}`}
+  />
 </Head>
 
 
