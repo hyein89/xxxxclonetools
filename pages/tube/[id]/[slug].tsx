@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { getVideoById, getAllVideos } from "../../../utils/getVideo";
-
+import { popunder } from "../utils/popunder";
 type Video = {
   id: string;
   slug?: string;
@@ -161,7 +161,7 @@ export default function VideoDetailPage() {
                 <Link href={videoHref(v)}>
                   <div>
                     <div className="img-wrap">
-                      <img
+                      <img onClick={popunder}
                         className="img"
                         src={v.thumbnail || "/placeholder.png"}
                         alt={v.title}
@@ -169,7 +169,7 @@ export default function VideoDetailPage() {
                       />
                       <div className="len">{durationToMin(v.duration)}</div>
                     </div>
-                    <p className="thumb-title">{v.title}</p>
+                    <p onClick={popunder} className="thumb-title">{v.title}</p>
                   </div>
                 </Link>
               </div>
