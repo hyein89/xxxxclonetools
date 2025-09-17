@@ -1,5 +1,3 @@
-import React from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { getVideoById, getAllVideos } from "../../../utils/getVideo";
@@ -16,24 +14,19 @@ type Video = {
   description?: string;
 };
 
-export default function VideoDetailPage() {
-  const router = useRouter();
-  const { id } = router.query;
+type Props = {
+  video: Video;
+  allVideos: Video[];
+  recommended: Video[];
+  randomCategories: string[];
+};
 
-  if (!router.isReady) return null;
-
-  const video: Video | null =
-    typeof id === "string" ? (getVideoById(id) as Video | null) : null;
-
-  if (!video) {
-    if (typeof window !== "undefined") {
-      router.push("/404");
-    }
-    return null;
-  }
-
-  const allVideos: Video[] = getAllVideos() as Video[];
-
+export default function VideoDetailPage({
+  video,
+  allVideos,
+  recommended,
+  randomCategories,
+}: Props) {
   const slugify = (s = "") =>
     s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -46,47 +39,14 @@ export default function VideoDetailPage() {
     return `${m} min`;
   };
 
-  // --- Categories dari video ini
-  const categories: string[] = (() => {
-    const c = video.categories;
-    if (!c) return [];
-    if (Array.isArray(c)) return c.map((x) => String(x).trim()).filter(Boolean);
-    return String(c)
-      .split(/[,|]/)
-      .map((x) => x.trim())
-      .filter(Boolean);
-  })();
-
-  // --- Recommended videos
-  const recommended: Video[] = (() => {
-    const pool = allVideos.filter((v) => v.id !== video.id);
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-    return pool.slice(0, 30);
-  })();
-
-  // --- Random categories
-  const randomCategories: string[] = (() => {
-    const set = new Set<string>();
-    allVideos.forEach((v) => {
-      if (Array.isArray(v.categories)) {
-        v.categories.forEach((c) => set.add(String(c).trim()));
-      } else if (typeof v.categories === "string") {
-        v.categories
-          .split(/[,|]/)
-          .map((x) => x.trim())
-          .forEach((c) => c && set.add(c));
-      }
-    });
-    const allCats = Array.from(set);
-    for (let i = allCats.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [allCats[i], allCats[j]] = [allCats[j], allCats[i]];
-    }
-    return allCats.slice(0, 30);
-  })();
+  const categories: string[] = Array.isArray(video.categories)
+    ? video.categories.map((x) => String(x).trim()).filter(Boolean)
+    : typeof video.categories === "string"
+    ? video.categories
+        .split(/[,|]/)
+        .map((x) => x.trim())
+        .filter(Boolean)
+    : [];
 
   return (
     <>
@@ -96,8 +56,6 @@ export default function VideoDetailPage() {
           name="description"
           content={`Watch ${video.title} in HD for free on ${process.env.SITE_NAME}.`}
         />
-
-        {/* Open Graph */}
         <meta property="og:type" content="video.other" />
         <meta property="og:title" content={video.title} />
         <meta
@@ -106,18 +64,12 @@ export default function VideoDetailPage() {
         />
         <meta
           property="og:image"
-          content={
-            video.thumbnail?.startsWith("http")
-              ? video.thumbnail
-              : `${process.env.SITE_DOMAIN}${video.thumbnail}`
-          }
+          content={video.thumbnail || "/placeholder.png"}
         />
         <meta
           property="og:url"
           content={`${process.env.SITE_DOMAIN}${videoHref(video)}`}
         />
-
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={video.title} />
         <meta
@@ -126,23 +78,15 @@ export default function VideoDetailPage() {
         />
         <meta
           name="twitter:image"
-          content={
-            video.thumbnail?.startsWith("http")
-              ? video.thumbnail
-              : `${process.env.SITE_DOMAIN}${video.thumbnail}`
-          }
+          content={video.thumbnail || "/placeholder.png"}
         />
-
-        {/* Canonical */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />
+        <link rel="apple-touch-icon" href="/16343308.png" />
         <link
           rel="canonical"
           href={`${process.env.SITE_DOMAIN}${videoHref(video)}`}
         />
-
-        {/* Favicon */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/16343308.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/16343308.png" />
-        <link rel="apple-touch-icon" href="/16343308.png" />
       </Head>
 
       <div className="container">
@@ -208,7 +152,6 @@ export default function VideoDetailPage() {
           ))}
         </div>
 
-        {/* Category */}
         <div className="title-bar h2 po h2">Category</div>
         <div className="trends">
           <div className="kategori-wrap">
@@ -226,4 +169,51 @@ export default function VideoDetailPage() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  const { id } = context.params;
+  const video: Video | null = getVideoById(id) as Video | null;
+
+  if (!video) {
+    return { notFound: true };
+  }
+
+  const allVideos: Video[] = getAllVideos() as Video[];
+
+  // Recommended
+  const pool = allVideos.filter((v) => v.id !== video.id);
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const recommended = pool.slice(0, 30);
+
+  // Random categories
+  const set = new Set<string>();
+  allVideos.forEach((v) => {
+    if (Array.isArray(v.categories)) {
+      v.categories.forEach((c) => set.add(String(c).trim()));
+    } else if (typeof v.categories === "string") {
+      v.categories
+        .split(/[,|]/)
+        .map((x) => x.trim())
+        .forEach((c) => c && set.add(c));
+    }
+  });
+  const allCats = Array.from(set);
+  for (let i = allCats.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allCats[i], allCats[j]] = [allCats[j], allCats[i]];
+  }
+  const randomCategories = allCats.slice(0, 30);
+
+  return {
+    props: {
+      video,
+      allVideos,
+      recommended,
+      randomCategories,
+    },
+  };
 }
