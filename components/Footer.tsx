@@ -1,3 +1,4 @@
+import Script from "next/script";
 export default function Footer() {
   const offerUrl = process.env.NEXT_PUBLIC_LINKOFFER || "https://default-offer.com";
   return (
