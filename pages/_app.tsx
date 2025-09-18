@@ -3,11 +3,19 @@ import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import Script from "next/script";
+import { useRouter } from "next/router";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // 🚀 Khusus halaman /embed/* → tanpa Layout, tanpa iklan
+  if (router.pathname.startsWith("/embed")) {
+    return <Component {...pageProps} />;
+  }
+
   return (
     <>
-      {/* Google Analytics - ganti G-XXXXXXX dengan GA Measurement ID kamu */}
+      {/* Google Analytics */}
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-MW8WDMB4WT"
@@ -25,7 +33,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
 
-      {/* Histats - ganti ID sesuai akunmu */}
+      {/* Histats */}
       <Script
         id="histats"
         strategy="afterInteractive"
@@ -44,15 +52,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
 
-      {/* App layout */}
+      {/* Layout default */}
       <Layout>
         <Component {...pageProps} />
 
-         {/* ADS SOSIALBAR */}
-        <script type="text/javascript" src="//difficultywithhold.com/89/6e/ba/896eba7b8908be72a17c46518013c4b8.js"></script>
+        {/* ADS */}
+        <script
+          type="text/javascript"
+          src="//difficultywithhold.com/89/6e/ba/896eba7b8908be72a17c46518013c4b8.js"
+        ></script>
       </Layout>
 
-      {/* Histats noscript fallback (gambar tanpa border via style) */}
+      {/* Histats noscript */}
       <noscript>
         <a href="https://www.histats.com" target="_blank" rel="noreferrer">
           <img
@@ -62,7 +73,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           />
         </a>
       </noscript>
-     
     </>
   );
 }
