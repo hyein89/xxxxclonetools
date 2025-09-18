@@ -33,15 +33,12 @@ export default function EmbedPage() {
           __html: `
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>${video.title} - ${video.id}</title>
-<style>
-${/* ⬇️ Copy semua CSS lo ke sini */ ""}
-${require("fs").readFileSync("public/embed.css", "utf8")}
-</style>
-</head>
+   <Head>
+        <title>{video.title} - Embed</title>
+        <meta name="robots" content="noindex, nofollow" />
+        {/* load CSS dari public */}
+        <link rel="stylesheet" href="/embed.css" />
+      </Head>
 <body>
   <div class="wrap" aria-live="polite">
     <h1 id="title">Loading... Please wait</h1>
