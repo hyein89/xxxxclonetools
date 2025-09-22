@@ -6,10 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Contoh iklan/head script */}
-        <script
-          type="text/javascript"
-          src="//difficultywithhold.com/4d/ee/fc/4deefc500d18b077c20b3d33e0dccb80.js"
-        ></script>
+
       </Head>
       <body>
         <Main />
