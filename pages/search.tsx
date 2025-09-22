@@ -49,7 +49,7 @@ export default function SearchPage() {
   // Random 25 kategori
   const randomCategories = categories
     .sort(() => Math.random() - 0.5)
-    .slice(0, 25);
+    .slice(0, 30);
 
   const siteDomain = process.env.SITE_DOMAIN || "https://example.com";
 
