@@ -71,7 +71,7 @@ export default function SearchPage() {
       const j = Math.floor(Math.random() * (i + 1));
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
-    return copy.slice(0, 25);
+    return copy.slice(0, 30);
   }, [categories]);
 
   return (
