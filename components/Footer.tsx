@@ -12,7 +12,7 @@ export default function Footer() {
         {/* script adsterra NATIVE BANER */}
         <Script
           id="adsterra-native"
-          src="//difficultywithhold.com/d62cde0b225e1812a42187e5eb1a7f52/invoke.js"
+          src="//lowlifewhateverspotless.com/d62cde0b225e1812a42187e5eb1a7f52/invoke.js"
           strategy="afterInteractive"
           async
           data-cfasync="false"
